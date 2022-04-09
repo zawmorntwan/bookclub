@@ -1,3 +1,4 @@
+import 'package:bookclub/routes.dart';
 import 'package:bookclub/screens/login/login.dart';
 import 'package:bookclub/utils/our_theme.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: OurTheme().buildTheme(),
-      home: const OurLogin(),
+      routes: getRoutes(),
+      initialRoute: OurLogin.route,
     );
   }
 }

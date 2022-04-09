@@ -1,17 +1,19 @@
+import 'package:bookclub/screens/login/login.dart';
 import 'package:bookclub/screens/signup/signup.dart';
 import 'package:bookclub/utils/our_theme.dart';
 import 'package:bookclub/widgets/our_container.dart';
 import 'package:flutter/material.dart';
 
-class OurLoginForm extends StatefulWidget {
-  OurLoginForm({Key? key}) : super(key: key);
+class OurSignupForm extends StatefulWidget {
+  OurSignupForm({Key? key}) : super(key: key);
 
   @override
-  State<OurLoginForm> createState() => _OurLoginFormState();
+  State<OurSignupForm> createState() => _OurSignupFormState();
 }
 
-class _OurLoginFormState extends State<OurLoginForm> {
+class _OurSignupFormState extends State<OurSignupForm> {
   bool isPasswordVisible = true;
+  bool isConfirmPasswordVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +26,27 @@ class _OurLoginFormState extends State<OurLoginForm> {
               horizontal: 8,
             ),
             child: Text(
-              'Log In',
+              'Sign Up',
               style: TextStyle(
                 color: Theme.of(context).secondaryHeaderColor,
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
             ),
+          ),
+          TextFormField(
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.person_outline,
+                color: OurTheme().lightGrey,
+              ),
+              hintText: 'Name',
+            ),
+            keyboardType: TextInputType.text,
+            textInputAction: TextInputAction.next,
+          ),
+          const SizedBox(
+            height: 20,
           ),
           TextFormField(
             decoration: InputDecoration(
@@ -77,6 +93,37 @@ class _OurLoginFormState extends State<OurLoginForm> {
           const SizedBox(
             height: 20,
           ),
+          TextFormField(
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.lock_open,
+                color: OurTheme().lightGrey,
+              ),
+              hintText: 'Confirm Password',
+              suffixIcon: IconButton(
+                icon: isConfirmPasswordVisible
+                    ? const Icon(
+                        Icons.visibility_off_outlined,
+                        color: Colors.grey,
+                        size: 16,
+                      )
+                    : const Icon(
+                        Icons.visibility_outlined,
+                        size: 16,
+                        color: Colors.grey,
+                      ),
+                onPressed: () => setState(
+                  () => isConfirmPasswordVisible = !isConfirmPasswordVisible,
+                ),
+              ),
+            ),
+            obscureText: isConfirmPasswordVisible,
+            keyboardType: TextInputType.text,
+            textInputAction: TextInputAction.next,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
           ElevatedButton(
             onPressed: () {},
             child: const Padding(
@@ -84,7 +131,7 @@ class _OurLoginFormState extends State<OurLoginForm> {
                 horizontal: 100,
               ),
               child: Text(
-                'Log In',
+                'Sign Up',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -95,9 +142,9 @@ class _OurLoginFormState extends State<OurLoginForm> {
           ),
           TextButton(
             onPressed: () {
-              Navigator.pushNamed(context, OurSignup.route);
+              Navigator.pushNamed(context, OurLogin.route);
             },
-            child: const Text("Don't have an account? Sign up here"),
+            child: const Text("Back to login"),
           )
         ],
       ),
