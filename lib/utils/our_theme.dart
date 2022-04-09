@@ -24,13 +24,20 @@ class OurTheme {
           borderSide: BorderSide(color: _lightGreen),
         ),
       ),
-      buttonTheme: ButtonThemeData(
-        buttonColor: _darkerGrey,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        minWidth: 200,
-        height: 40,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(_darkerGrey),
+          padding: MaterialStateProperty.all(
+            const EdgeInsets.symmetric(horizontal: 20),
+          ),
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+          minimumSize: MaterialStateProperty.all(
+            const Size.fromHeight(45),
+          ),
         ),
       ),
     );
